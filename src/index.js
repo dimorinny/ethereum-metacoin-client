@@ -1,7 +1,7 @@
-import '../stylesheets/app.css';
+import './app.css';
 import currentWeb3 from './web3';
-import {default as contract} from 'truffle-contract';
-import metacoin_artifacts from '../../build/contracts/MetaCoin.json';
+import contract from 'truffle-contract';
+import metacoin_artifacts from '../build/contracts/MetaCoin.json';
 
 // MetaCoin is our usable abstraction, which we'll use through the code below.
 const MetaCoin = contract(metacoin_artifacts);

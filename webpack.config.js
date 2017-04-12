@@ -12,12 +12,12 @@ const basePlugins = [
     }),
     new HtmlWebpackPlugin({
         filename: 'index.html',
-        template: './app/index.html'
+        template: 'index.html'
     })
 ];
 
 const baseEntry = [
-    './app/javascripts/app'
+    './src/index'
 ];
 
 const baseBabelLoaders = [
@@ -88,17 +88,17 @@ module.exports = {
             test: /\.js$/,
             use: ['react-hot-loader/webpack', 'babel-loader'],
             exclude: '/node_modules/',
-            include: path.join(__dirname, 'app')
+            include: path.join(__dirname, 'src')
         }, {
             test: /\.css$/,
             use: ['style-loader', 'css-loader', 'postcss-loader'],
             exclude: '/node_modules/',
-            include: path.join(__dirname, 'app')
+            include: path.join(__dirname, 'src')
         }, {
             test: /\.json$/,
             use: 'json-loader',
             exclude: '/node_modules/',
-            include: path.join(__dirname, 'app')
+            include: path.join(__dirname, 'src')
         }]
     }
 };
