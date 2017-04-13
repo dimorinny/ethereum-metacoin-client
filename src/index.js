@@ -1,10 +1,8 @@
 import './app.css';
-import currentWeb3 from './web3';
-import contract from 'truffle-contract';
-import metacoin_artifacts from '../build/contracts/MetaCoin.json';
+import provideWeb3 from './contract/web3';
+import provideMetacoin from './contract/metacoin';
 
-// MetaCoin is our usable abstraction, which we'll use through the code below.
-const MetaCoin = contract(metacoin_artifacts);
+let MetaCoin;
 
 // The following code is simple to show off interacting with your contracts.
 // As your needs grow you will likely need to change its form and structure.
@@ -16,11 +14,10 @@ window.App = {
     start: function () {
         const self = this;
 
-        // Bootstrap the MetaCoin abstraction for Use.
-        MetaCoin.setProvider(web3.currentProvider);
+        MetaCoin = provideMetacoin();
 
         // Get the initial account balance so it can be displayed.
-        web3.eth.getAccounts(function (err, accs) {
+        provideWeb3().eth.getAccounts(function (err, accs) {
             if (err != null) {
                 alert("There was an error fetching your accounts.");
                 return;
@@ -82,6 +79,5 @@ window.App = {
 };
 
 window.addEventListener('load', function () {
-    window.web3 = currentWeb3();
     App.start();
 });
