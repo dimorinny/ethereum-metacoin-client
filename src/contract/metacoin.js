@@ -4,7 +4,7 @@ import provideWeb3 from './web3';
 
 let _cachedMetacoin;
 
-export default function provideMetacoin() {
+export default () => {
     if (_cachedMetacoin) {
         return _cachedMetacoin;
     }

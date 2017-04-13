@@ -2,7 +2,7 @@ import Web3 from 'web3';
 
 let _cachedWeb3;
 
-export default function provideWeb3() {
+export default () => {
     let result;
 
     if (_cachedWeb3) {
@@ -21,4 +21,4 @@ export default function provideWeb3() {
     _cachedWeb3 = result;
 
     return result;
-};
+}
