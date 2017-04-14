@@ -1,1 +1,1 @@
-## Etherium DApp react starter
+## Ethereum DApp react starter

@@ -1,7 +1,7 @@
 {
-    "name": "etherium-dapp-react-starter",
+    "name": "ethereum-dapp-react-starter",
     "version": "0.0.1",
-    "description": "Starter for building dapp based on Etherium",
+    "description": "Starter for building dapp based on Ethereum",
     "scripts": {
         "lint": "eslint ./",
         "build": "webpack",
