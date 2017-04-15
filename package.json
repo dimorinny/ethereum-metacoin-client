@@ -1,7 +1,7 @@
 {
-    "name": "ethereum-dapp-react-starter",
+    "name": "ethereum-metacoin-client",
     "version": "0.0.1",
-    "description": "Starter for building dapp based on Ethereum",
+    "description": "Ethereum metacoin client",
     "scripts": {
         "lint": "eslint ./",
         "build": "webpack",

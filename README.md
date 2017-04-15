@@ -1,1 +1,1 @@
-## Ethereum DApp react starter
+## Ethereum metacoin client
