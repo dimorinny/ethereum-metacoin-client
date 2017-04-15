@@ -1,0 +1,9 @@
+.manage_input_container {
+    width: 400px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.manage_input {
+    width: 100%;
+}

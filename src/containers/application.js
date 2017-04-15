@@ -3,8 +3,9 @@ import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {Link, IndexLink} from 'react-router';
 import {bindActionCreators} from 'redux';
-import * as actionCreators from '../actions/account';
+import * as actionCreators from '../actions/metacoin';
 import Account from '../components/account';
+import './application.css';
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Application extends Component {
