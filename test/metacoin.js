@@ -1,38 +1,41 @@
 const MetaCoin = artifacts.require('./MetaCoin.sol');
 
-contract('MetaCoin', function (accounts) {
-    it('should put 10000 MetaCoin in the first account', function () {
-        return MetaCoin.deployed().then(function (instance) {
+contract('MetaCoin', accounts => {
+
+    it('should put 10000 MetaCoin in the first account', () => {
+        return MetaCoin.deployed().then(instance => {
             return instance.getBalance.call(accounts[0]);
-        }).then(function (balance) {
+        }).then(balance => {
             assert.equal(balance.valueOf(), 10000, '10000 wasn\'t in the first account');
         });
     });
-    it('should call a function that depends on a linked library', function () {
+
+    it('should call a function that depends on a linked library', () => {
         let meta;
         let metaCoinBalance;
         let metaCoinEthBalance;
 
-        return MetaCoin.deployed().then(function (instance) {
+        return MetaCoin.deployed().then(instance => {
             meta = instance;
             return meta.getBalance.call(accounts[0]);
-        }).then(function (outCoinBalance) {
+        }).then(outCoinBalance => {
             metaCoinBalance = outCoinBalance.toNumber();
             return meta.getBalanceInEth.call(accounts[0]);
-        }).then(function (outCoinBalanceEth) {
+        }).then(outCoinBalanceEth => {
             metaCoinEthBalance = outCoinBalanceEth.toNumber();
-        }).then(function () {
+        }).then(() => {
             assert.equal(
-                metaCoinEthBalance, 2 * metaCoinBalance,
+                metaCoinEthBalance,
+                2 * metaCoinBalance,
                 'Library function returned unexpeced function, linkage may be broken'
             );
         });
     });
 
-    it('should send coin correctly', function () {
+    it('should send coin correctly', () => {
         let meta;
 
-        //    Get initial balances of first and second account.
+        // Get initial balances of first and second account.
         const account_one = accounts[0];
         const account_two = accounts[1];
 
@@ -43,23 +46,22 @@ contract('MetaCoin', function (accounts) {
 
         const amount = 10;
 
-        return MetaCoin.deployed().then(function (instance) {
+        return MetaCoin.deployed().then(instance => {
             meta = instance;
             return meta.getBalance.call(account_one);
-        }).then(function (balance) {
+        }).then(balance => {
             account_one_starting_balance = balance.toNumber();
             return meta.getBalance.call(account_two);
-        }).then(function (balance) {
+        }).then(balance => {
             account_two_starting_balance = balance.toNumber();
             return meta.sendCoin(account_two, amount, {from: account_one});
-        }).then(function () {
+        }).then(() => {
             return meta.getBalance.call(account_one);
-        }).then(function (balance) {
+        }).then(balance => {
             account_one_ending_balance = balance.toNumber();
             return meta.getBalance.call(account_two);
-        }).then(function (balance) {
+        }).then(balance => {
             account_two_ending_balance = balance.toNumber();
-
             assert.equal(
                 account_one_ending_balance,
                 account_one_starting_balance - amount,
