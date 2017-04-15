@@ -1,4 +1,4 @@
-import provideWeb3 from '../contract/web3';
+import {provideWeb3} from '../contract/web3';
 
 export function getAddresses(limit) {
     return new Promise((resolve, reject) => {

@@ -1,10 +1,10 @@
 import contract from 'truffle-contract';
 import artifacts from '../../build/contracts/MetaCoin.json';
-import provideWeb3 from './web3';
+import {provideWeb3} from './web3';
 
 let _cachedMetacoin;
 
-export default () => {
+export function provideMetacoin() {
     if (_cachedMetacoin) {
         return _cachedMetacoin;
     }
@@ -15,4 +15,8 @@ export default () => {
     _cachedMetacoin = metacoin;
 
     return metacoin;
+}
+
+export function provideDeployedMetacoin() {
+    return provideMetacoin().deployed();
 }

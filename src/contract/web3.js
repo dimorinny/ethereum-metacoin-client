@@ -2,7 +2,7 @@ import Web3 from 'web3';
 
 let _cachedWeb3;
 
-export default () => {
+export function provideWeb3() {
     let result;
 
     if (_cachedWeb3) {
@@ -32,4 +32,16 @@ export default () => {
     _cachedWeb3 = result;
 
     return result;
+}
+
+export function currentAccount() {
+    return new Promise((resolve, reject) => {
+        provideWeb3().eth.getAccounts((error, accounts) => {
+            if (error) {
+                reject();
+            } else {
+                resolve(accounts[0]);
+            }
+        });
+    });
 }
