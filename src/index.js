@@ -38,12 +38,12 @@ ReactDOM.render(
 //         // Get the initial account balance so it can be displayed.
 //         provideWeb3().eth.getAccounts(function (err, accs) {
 //             if (err != null) {
-//                 alert("There was an error fetching your accounts.");
+//                 alert('There was an error fetching your accounts.');
 //                 return;
 //             }
 //
 //             if (accs.length == 0) {
-//                 alert("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
+//                 alert('Couldn't get any accounts! Make sure your Ethereum client is configured correctly.');
 //                 return;
 //             }
 //
@@ -55,7 +55,7 @@ ReactDOM.render(
 //     },
 //
 //     setStatus: function (message) {
-//         const status = document.getElementById("status");
+//         const status = document.getElementById('status');
 //         status.innerHTML = message;
 //     },
 //
@@ -67,32 +67,32 @@ ReactDOM.render(
 //             meta = instance;
 //             return meta.getBalance.call(account, {from: account});
 //         }).then(function (value) {
-//             const balance_element = document.getElementById("balance");
+//             const balance_element = document.getElementById('balance');
 //             balance_element.innerHTML = value.valueOf();
 //         }).catch(function (e) {
 //             console.log(e);
-//             self.setStatus("Error getting balance; see log.");
+//             self.setStatus('Error getting balance; see log.');
 //         });
 //     },
 //
 //     sendCoin: function () {
 //         const self = this;
 //
-//         const amount = parseInt(document.getElementById("amount").value);
-//         const receiver = document.getElementById("receiver").value;
+//         const amount = parseInt(document.getElementById('amount').value);
+//         const receiver = document.getElementById('receiver').value;
 //
-//         this.setStatus("Initiating transaction... (please wait)");
+//         this.setStatus('Initiating transaction... (please wait)');
 //
 //         let meta;
 //         MetaCoin.deployed().then(function (instance) {
 //             meta = instance;
 //             return meta.sendCoin(receiver, amount, {from: account});
 //         }).then(function () {
-//             self.setStatus("Transaction complete!");
+//             self.setStatus('Transaction complete!');
 //             self.refreshBalance();
 //         }).catch(function (e) {
 //             console.log(e);
-//             self.setStatus("Error sending coin; see log.");
+//             self.setStatus('Error sending coin; see log.');
 //         });
 //     }
 // };

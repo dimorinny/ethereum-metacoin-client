@@ -1,14 +1,14 @@
-const MetaCoin = artifacts.require("./MetaCoin.sol");
+const MetaCoin = artifacts.require('./MetaCoin.sol');
 
 contract('MetaCoin', function (accounts) {
-    it("should put 10000 MetaCoin in the first account", function () {
+    it('should put 10000 MetaCoin in the first account', function () {
         return MetaCoin.deployed().then(function (instance) {
             return instance.getBalance.call(accounts[0]);
         }).then(function (balance) {
-            assert.equal(balance.valueOf(), 10000, "10000 wasn't in the first account");
+            assert.equal(balance.valueOf(), 10000, '10000 wasn\'t in the first account');
         });
     });
-    it("should call a function that depends on a linked library", function () {
+    it('should call a function that depends on a linked library', function () {
         let meta;
         let metaCoinBalance;
         let metaCoinEthBalance;
@@ -22,11 +22,14 @@ contract('MetaCoin', function (accounts) {
         }).then(function (outCoinBalanceEth) {
             metaCoinEthBalance = outCoinBalanceEth.toNumber();
         }).then(function () {
-            assert.equal(metaCoinEthBalance, 2 * metaCoinBalance, "Library function returned unexpeced function, linkage may be broken");
+            assert.equal(
+                metaCoinEthBalance, 2 * metaCoinBalance,
+                'Library function returned unexpeced function, linkage may be broken'
+            );
         });
     });
 
-    it("should send coin correctly", function () {
+    it('should send coin correctly', function () {
         let meta;
 
         //    Get initial balances of first and second account.
@@ -57,8 +60,16 @@ contract('MetaCoin', function (accounts) {
         }).then(function (balance) {
             account_two_ending_balance = balance.toNumber();
 
-            assert.equal(account_one_ending_balance, account_one_starting_balance - amount, "Amount wasn't correctly taken from the sender");
-            assert.equal(account_two_ending_balance, account_two_starting_balance + amount, "Amount wasn't correctly sent to the receiver");
+            assert.equal(
+                account_one_ending_balance,
+                account_one_starting_balance - amount,
+                'Amount wasn\'t correctly taken from the sender'
+            );
+            assert.equal(
+                account_two_ending_balance,
+                account_two_starting_balance + amount,
+                'Amount wasn\'t correctly sent to the receiver'
+            );
         });
     });
 });

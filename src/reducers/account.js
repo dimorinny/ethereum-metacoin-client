@@ -1,14 +1,14 @@
 import typeToReducer from 'type-to-reducer';
-import {LOAD_ADDRESSES} from '../constants';
+import {LOAD_ACCOUNT} from '../constants';
 
-const ADDRESSES_DEFAULT_STATE = {
-    addresses: [],
+const ACCOUNT_DEFAULT_STATE = {
+    account: null,
     isPending: true,
     error: null
 };
 
 export default typeToReducer({
-    [LOAD_ADDRESSES]: {
+    [LOAD_ACCOUNT]: {
         PENDING: (state, action) => ({
             ...state,
             isPending: true,
@@ -17,13 +17,13 @@ export default typeToReducer({
         REJECTED: (state, action) => ({
             ...state,
             isPending: false,
-            error: 'Load addresses error'
+            error: 'Load account error'
         }),
         FULFILLED: (state, action) => ({
             ...state,
-            addresses: action.payload,
+            account: action.payload,
             isPending: false,
             error: null
         })
     }
-}, ADDRESSES_DEFAULT_STATE);
+}, ACCOUNT_DEFAULT_STATE);

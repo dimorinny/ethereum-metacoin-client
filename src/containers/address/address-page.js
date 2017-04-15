@@ -13,13 +13,13 @@ export default class AddressPage extends Component {
     };
 
     componentDidMount() {
-        let {actions} = this.props;
+        const {actions} = this.props;
         actions.loadAddresses(10);
     };
 
     render() {
-        let {addressState} = this.props;
-        let {addresses, isPending, error} = addressState;
+        const {addressState} = this.props;
+        const {addresses, isPending, error} = addressState;
 
         let content;
 
