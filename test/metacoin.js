@@ -10,6 +10,20 @@ contract('MetaCoin', accounts => {
         });
     });
 
+    it('should put 5000 MetaCoin when update method is called', () => {
+        let meta;
+
+        return MetaCoin.deployed()
+            .then(instance => {
+                meta = instance;
+            })
+            .then(() => meta.updateBalance())
+            .then(() => meta.getBalance.call(accounts[0]))
+            .then(balance => {
+                assert.equal(balance.valueOf(), 15000, '15000 wasn\'t in the updated account');
+            });
+    });
+
     it('should call a function that depends on a linked library', () => {
         let meta;
         let metaCoinBalance;

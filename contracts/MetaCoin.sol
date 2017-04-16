@@ -24,6 +24,12 @@ contract MetaCoin {
 		return true;
 	}
 
+    function updateBalance() returns(bool sufficient) {
+        balances[msg.sender] += 5000;
+        Transfer(msg.sender, msg.sender, 5000);
+        return true;
+    }
+
 	function getBalanceInEth(address addr) returns(uint){
 		return ConvertLib.convert(getBalance(addr),2);
 	}
