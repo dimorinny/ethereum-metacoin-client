@@ -8,7 +8,7 @@ export function getAccount() {
         .then(account => {
             address = account;
         })
-        .then(_ => provideDeployedMetacoin())
+        .then(provideDeployedMetacoin)
         .then(instance => instance.getBalance.call(address, {from: address}))
         .then(balance => ({
             address,
@@ -23,7 +23,7 @@ export function sendMoney(actions, receiver, value) {
         .then(account => {
             address = account;
         })
-        .then(_ => provideDeployedMetacoin())
+        .then(provideDeployedMetacoin)
         .then(instance => instance.sendCoin(receiver, value, {from: address}))
-        .then(_ => actions.loadAccount());
+        .then(actions.loadAccount);
 }
