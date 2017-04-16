@@ -27,3 +27,15 @@ export function sendMoney(actions, receiver, value) {
         .then(instance => instance.sendCoin(receiver, value, {from: address}))
         .then(actions.loadAccount);
 }
+
+export function updateBalance(actions) {
+    let address;
+
+    return currentAccount()
+        .then(account => {
+            address = account;
+        })
+        .then(provideDeployedMetacoin)
+        .then(instance => instance.updateBalance({from: address}))
+        .then(actions.loadAccount);
+}

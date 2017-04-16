@@ -69,6 +69,13 @@ export default class ManagePage extends Component {
                         onClick={this.submit}
                     />
                 </div>
+                <div className='manage_input_container'>
+                    <input
+                        type='button'
+                        value='Update balance (+5000)'
+                        onClick={this.update}
+                    />
+                </div>
                 {status}
             </div>
         );
@@ -108,6 +115,11 @@ export default class ManagePage extends Component {
             this.state.address,
             parseInt(this.state.price)
         );
+    };
+
+    update = () => {
+        const {actions} = this.props;
+        actions.update(actions);
     };
 }
 
