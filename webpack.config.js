@@ -51,7 +51,6 @@ const prodPlugins = [
         minRatio: 0.8
     }),
     new webpack.optimize.UglifyJsPlugin({
-        sourcemap: true,
         beautify: false,
         comments: false,
         compress: {
@@ -60,8 +59,7 @@ const prodPlugins = [
             loops: true,
             unused: true,
             warnings: false,
-            drop_console: true,
-            unsafe: true
+            drop_console: true
         }
     })
 ];

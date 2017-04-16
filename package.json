@@ -4,7 +4,7 @@
     "description": "Ethereum metacoin client",
     "scripts": {
         "lint": "eslint ./",
-        "build": "webpack",
+        "build": "cross-env NODE_ENV=production webpack",
         "dev": "cross-env NODE_ENV=development node server.js"
     },
     "author": "Merkurev Dmitry",
