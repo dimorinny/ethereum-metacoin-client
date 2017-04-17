@@ -25,6 +25,25 @@ export default class Application extends Component {
         const {children, accountState} = this.props;
         const {error, account, isPending} = accountState;
 
+        let content;
+
+        if (error == null) {
+            content = this.renderContent();
+        } else {
+            content = Application.renderError();
+        }
+
+        return (
+            <div>
+                {content}
+            </div>
+        );
+    };
+
+    renderContent() {
+        const {children, accountState} = this.props;
+        const {error, account, isPending} = accountState;
+
         return (
             <div>
                 <Account
@@ -37,6 +56,20 @@ export default class Application extends Component {
                 <Link to='/address' className='link'>Address</Link>
 
                 { children }
+            </div>
+        );
+    };
+
+    static renderError() {
+        const metamask = <a href='https://github.com/MetaMask'>Metamask</a>;
+        const mist = <a href='https://github.com/ethereum/mist'>Mist</a>;
+
+        return (
+            <div>
+                <h2>Error load your account:</h2>
+                <h4>
+                    Use static {metamask} or {mist} projects for authorization in blockchain.
+                </h4>
             </div>
         );
     };
