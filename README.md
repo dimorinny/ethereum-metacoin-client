@@ -83,4 +83,4 @@ That's all, your contract has deployed to Ropsten test network. Now you sould bu
 yarn run build
 ```
 
-and deploy `build` directory to your host. Clients can communicate with contract using [Mist](https://github.com/ethereum/mist) or [MetaMask](https://github.com/MetaMask) projects for authorization in blockchain using his accounts.
+and deploy `build` directory to your host. Clients can communicate with contract using [Mist](https://github.com/ethereum/mist) or [MetaMask](https://github.com/MetaMask) projects for authorization in blockchain using their accounts.
