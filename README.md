@@ -10,7 +10,7 @@ This repo was created to demonstrate how you can create ethereum DApp using [rea
 
 ### Demo
 
-This contract is deployed to ropsten test network [here](http://metacoin.westeurope.cloudapp.azure.com/). Don't forget to use [Mist](https://github.com/ethereum/mist) or [MetaMask](https://github.com/MetaMask) for authorization.
+This contract is deployed to Ropsten test network [here](http://metacoin.westeurope.cloudapp.azure.com/). Don't forget to use [Mist](https://github.com/ethereum/mist) or [MetaMask](https://github.com/MetaMask) for authorization.
 
 ### Get started with dev network
 
@@ -77,7 +77,7 @@ truffle compile
 truffle deploy --network ropsten
 ```
 
-That's all, your contract has deployed to ropsten test network. Now you sould build frontend part using: 
+That's all, your contract has deployed to Ropsten test network. Now you sould build frontend part using: 
 
 ```
 yarn run build
