@@ -1,4 +1,5 @@
 import Web3 from 'web3';
+import onLoad from '../util/load';
 
 let _cachedWeb3;
 
@@ -35,19 +36,20 @@ function _provideWeb3() {
 }
 
 export function provideWeb3() {
-    return new Promise(resolve => {
-        resolve(_provideWeb3());
-    });
+    return onLoad()
+        .then(_ => _provideWeb3());
 }
 
 export function currentAccount() {
-    return new Promise((resolve, reject) => {
-        _provideWeb3().eth.getAccounts((error, accounts) => {
-            if (error) {
-                reject();
-            } else {
-                resolve(accounts[0]);
-            }
-        });
-    });
+    return provideWeb3()
+        .then(instance =>
+            new Promise((resolve, reject) => {
+                instance.eth.getAccounts((error, accounts) => {
+                    if (error) {
+                        reject();
+                    } else {
+                        resolve(accounts[0]);
+                    }
+                });
+            }));
 }
